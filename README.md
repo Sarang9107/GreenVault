@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Environmental Data Governance System (Next.js + Firebase)
 
-## Getting Started
+Full-stack demo app for **privacy**, **retention**, and **compliance/auditability** of environmental datasets.
 
-First, run the development server:
+## Roles
+
+- **Admin**: manage users/roles, define retention rules, run retention, view audit logs
+- **Data Provider**: upload datasets (CSV/JSON), tag sensitivity, manage own datasets
+- **Public**: view **anonymized + aggregated** datasets only
+
+## Firestore collections
+
+- `users`: `{ uid, email, role, createdAt, lastLoginAt }`
+- `datasets` (private): raw/encrypted payload + metadata
+- `publicDatasets` (public): anonymized samples + aggregates only
+- `retentionRules`: admin-defined policies (match by dataType + sensitivity)
+- `archivedDatasets`: summarized archive output (no raw payload)
+- `auditLogs`: immutable action logs
+
+## Security model (important)
+
+- **Auth**: Firebase Auth (email/password) on the client.
+- **Session**: after login, the client exchanges the Firebase ID token for an **httpOnly JWT cookie** (`envds_session`).
+- **RBAC**: Next.js `middleware.ts` verifies the session cookie (Edge-safe) and protects `/admin/*`, `/provider/*`, and `/api/admin/*`.
+- **Data privacy**:
+  - Raw datasets are stored only in `datasets`
+  - Public access reads only `publicDatasets` (aggregated/anonymized)
+  - `SENSITIVE` / `RESTRICTED` uploads store raw payload **encrypted at rest** (AES-256-GCM)
+
+## Firestore Security Rules
+
+Rules live in `firestore.rules` and enforce:
+
+- Admin: full access
+- Provider: access only to own `datasets`
+- Public: read only `publicDatasets`
+
+## Setup
+
+1. Create a Firebase project + Firestore.
+2. Enable **Authentication → Email/Password**.
+3. Create a **service account** and copy:
+   - `project_id` → `FIREBASE_PROJECT_ID`
+   - `client_email` → `FIREBASE_CLIENT_EMAIL`
+   - `private_key` → `FIREBASE_PRIVATE_KEY` (keep literal `\n` newlines)
+4. Create `env-data-governance-system/.env.local` (not committed) using `env.example`.
+5. Install and run:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Bootstrap an Admin (demo)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Set `BOOTSTRAP_ADMIN_EMAILS=you@example.com` in `.env.local`. The first login with that email becomes **ADMIN**.
 
-## Learn More
+## Demo retention
 
-To learn more about Next.js, take a look at the following resources:
+Admins can create retention rules in `/admin/retention`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+For hackathon demos, run retention manually from `/admin`:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Expired datasets are **archived** (summary only) or **deleted** based on rule action.
 
-## Deploy on Vercel
+## Project structure (high-level)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `src/app/(auth)/*`: login/signup
+- `src/app/(app)/*`: role dashboards (`/admin`, `/provider`, `/public`)
+- `src/app/api/*`: route handlers (CRUD + retention + audit)
+- `src/lib/*`: firebase client/admin, auth session, encryption, retention matching
+- `firestore.rules`: Firestore security rules
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notes
+
+- This project focuses on **governance logic** over data volume. For production, store large files in object storage and keep metadata/aggregates in Firestore.
