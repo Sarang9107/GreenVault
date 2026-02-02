@@ -1,0 +1,72 @@
+[debug] [2026-02-02T18:11:21.624Z] ----------------------------------------------------------------------
+[debug] [2026-02-02T18:11:21.630Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\saran\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only firestore:indexes
+[debug] [2026-02-02T18:11:21.631Z] CLI Version:   15.5.1
+[debug] [2026-02-02T18:11:21.631Z] Platform:      win32
+[debug] [2026-02-02T18:11:21.632Z] Node Version:  v20.17.0
+[debug] [2026-02-02T18:11:21.632Z] Time:          Mon Feb 02 2026 23:41:21 GMT+0530 (India Standard Time)
+[debug] [2026-02-02T18:11:21.632Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-02-02T18:11:25.447Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-02-02T18:11:25.450Z] > authorizing via signed-in user (saranghekad2005@gmail.com)
+[debug] [2026-02-02T18:11:25.451Z] [iam] checking project greenvault-93857 for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]
+[debug] [2026-02-02T18:11:25.453Z] Checked if tokens are valid: false, expires at: 1770053851097
+[debug] [2026-02-02T18:11:25.454Z] Checked if tokens are valid: false, expires at: 1770053851097
+[debug] [2026-02-02T18:11:25.455Z] > refreshing access token with scopes: []
+[debug] [2026-02-02T18:11:25.459Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-02-02T18:11:25.459Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-02-02T18:11:25.726Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-02-02T18:11:25.727Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-02-02T18:11:25.748Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/greenvault-93857:testIamPermissions [none]
+[debug] [2026-02-02T18:11:25.749Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/greenvault-93857:testIamPermissions  x-goog-user-project=greenvault-93857
+[debug] [2026-02-02T18:11:25.750Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/greenvault-93857:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[debug] [2026-02-02T18:11:27.252Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/greenvault-93857:testIamPermissions 200
+[debug] [2026-02-02T18:11:27.252Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/greenvault-93857:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[info] 
+[info] === Deploying to 'greenvault-93857'...
+[info] 
+[info] i  deploying firestore 
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[info] i  firestore: ensuring required API firestore.googleapis.com is enabled... 
+[debug] [2026-02-02T18:11:27.259Z] Checked if tokens are valid: true, expires at: 1770059484728
+[debug] [2026-02-02T18:11:27.260Z] Checked if tokens are valid: true, expires at: 1770059484728
+[debug] [2026-02-02T18:11:27.260Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/greenvault-93857/databases/(default) [none]
+[debug] [2026-02-02T18:11:28.930Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/greenvault-93857/databases/(default) 200
+[debug] [2026-02-02T18:11:28.931Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/greenvault-93857/databases/(default) {"name":"projects/greenvault-93857/databases/(default)","uid":"ed86b68f-e868-4ab5-8831-a19db83156d7","createTime":"2026-02-02T16:37:37.301952Z","updateTime":"2026-02-02T16:37:37.301952Z","locationId":"nam5","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2026-02-02T17:11:29.260113Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"s","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","freeTier":true,"realtimeUpdatesMode":"REALTIME_UPDATES_MODE_ENABLED","etag":"IL6VjIS0u5IDMKa8/Yufu5ID"}
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2026-02-02T18:11:28.934Z] Checked if tokens are valid: true, expires at: 1770059484728
+[debug] [2026-02-02T18:11:28.934Z] Checked if tokens are valid: true, expires at: 1770059484728
+[debug] [2026-02-02T18:11:28.934Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/greenvault-93857:test [none]
+[debug] [2026-02-02T18:11:28.934Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/greenvault-93857:test [omitted]
+[debug] [2026-02-02T18:11:30.299Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/greenvault-93857:test 200
+[debug] [2026-02-02T18:11:30.299Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/greenvault-93857:test {}
+[info] +  cloud.firestore: rules file firestore.rules compiled successfully 
+[info] i  firestore: deploying indexes... 
+[debug] [2026-02-02T18:11:30.302Z] Checked if tokens are valid: true, expires at: 1770059484728
+[debug] [2026-02-02T18:11:30.302Z] Checked if tokens are valid: true, expires at: 1770059484728
+[debug] [2026-02-02T18:11:30.303Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/greenvault-93857/databases/(default)/collectionGroups/-/indexes [none]
+[debug] [2026-02-02T18:11:30.626Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/greenvault-93857/databases/(default)/collectionGroups/-/indexes 200
+[debug] [2026-02-02T18:11:30.626Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/greenvault-93857/databases/(default)/collectionGroups/-/indexes {"indexes":[{"name":"projects/greenvault-93857/databases/(default)/collectionGroups/auditLogs/indexes/CICAgOjXh4EK","queryScope":"COLLECTION","fields":[{"fieldPath":"createdAt","order":"DESCENDING"},{"fieldPath":"action","order":"ASCENDING"},{"fieldPath":"__name__","order":"ASCENDING"}],"state":"READY","density":"SPARSE_ALL"}]}
+[debug] [2026-02-02T18:11:30.626Z] Checked if tokens are valid: true, expires at: 1770059484728
+[debug] [2026-02-02T18:11:30.627Z] Checked if tokens are valid: true, expires at: 1770059484728
+[debug] [2026-02-02T18:11:30.627Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/greenvault-93857/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* [none]
+[debug] [2026-02-02T18:11:30.932Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/greenvault-93857/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* 200
+[debug] [2026-02-02T18:11:30.932Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/greenvault-93857/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* {"fields":[{"name":"projects/greenvault-93857/databases/(default)/collectionGroups/__default__/fields/*","indexConfig":{"indexes":[{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"ASCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"DESCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","arrayConfig":"CONTAINS"}],"state":"READY"}]}}]}
+[debug] [2026-02-02T18:11:30.932Z] Checked if tokens are valid: true, expires at: 1770059484728
+[debug] [2026-02-02T18:11:30.933Z] Checked if tokens are valid: true, expires at: 1770059484728
+[debug] [2026-02-02T18:11:30.933Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/greenvault-93857/databases/(default) [none]
+[debug] [2026-02-02T18:11:31.252Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/greenvault-93857/databases/(default) 200
+[debug] [2026-02-02T18:11:31.252Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/greenvault-93857/databases/(default) {"name":"projects/greenvault-93857/databases/(default)","uid":"ed86b68f-e868-4ab5-8831-a19db83156d7","createTime":"2026-02-02T16:37:37.301952Z","updateTime":"2026-02-02T16:37:37.301952Z","locationId":"nam5","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2026-02-02T17:11:31.576650Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"s","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","freeTier":true,"realtimeUpdatesMode":"REALTIME_UPDATES_MODE_ENABLED","etag":"ILLImYW0u5IDMKa8/Yufu5ID"}
+[debug] [2026-02-02T18:11:31.254Z] Skipping existing index: {"collectionGroup":"auditLogs","queryScope":"COLLECTION","fields":[{"fieldPath":"createdAt","order":"DESCENDING"},{"fieldPath":"action","order":"ASCENDING"},{"fieldPath":"__name__","order":"ASCENDING"}]}
+[debug] [2026-02-02T18:11:31.254Z] Creating new index: {"collectionGroup":"datasets","queryScope":"COLLECTION_GROUP","fields":[{"fieldPath":"ownerUid","order":"ASCENDING"},{"fieldPath":"createdAtMs","order":"DESCENDING"}]}
+[debug] [2026-02-02T18:11:31.254Z] Checked if tokens are valid: true, expires at: 1770059484728
+[debug] [2026-02-02T18:11:31.255Z] Checked if tokens are valid: true, expires at: 1770059484728
+[debug] [2026-02-02T18:11:31.255Z] >>> [apiv2][query] POST https://firestore.googleapis.com/v1/projects/greenvault-93857/databases/(default)/collectionGroups/datasets/indexes [none]
+[debug] [2026-02-02T18:11:31.255Z] >>> [apiv2][body] POST https://firestore.googleapis.com/v1/projects/greenvault-93857/databases/(default)/collectionGroups/datasets/indexes {"fields":[{"fieldPath":"ownerUid","order":"ASCENDING"},{"fieldPath":"createdAtMs","order":"DESCENDING"}],"queryScope":"COLLECTION_GROUP"}
+[debug] [2026-02-02T18:11:31.757Z] <<< [apiv2][status] POST https://firestore.googleapis.com/v1/projects/greenvault-93857/databases/(default)/collectionGroups/datasets/indexes 200
+[debug] [2026-02-02T18:11:31.758Z] <<< [apiv2][body] POST https://firestore.googleapis.com/v1/projects/greenvault-93857/databases/(default)/collectionGroups/datasets/indexes {"name":"projects/greenvault-93857/databases/(default)/operations/S01vcFVpSmdBQ0lDDCoDIGNiMzQ1YmY4OTRlOS01NTY5LTQ5YjQtYmQ3OC00ZDI0YTU2OCQac2VuaWxlcGlwCQpBEg","metadata":{"@type":"type.googleapis.com/google.firestore.admin.v1.IndexOperationMetadata","startTime":"2026-02-02T18:11:32.013223Z","index":"projects/greenvault-93857/databases/(default)/collectionGroups/datasets/indexes/CICAgJiUpoMK","state":"INITIALIZING"}}
+[info] +  firestore: deployed indexes in firestore.indexes.json successfully for (default) database 
+[info] 
+[info] +  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/greenvault-93857/overview
